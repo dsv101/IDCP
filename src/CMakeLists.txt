@@ -12,6 +12,10 @@ set(PROJECT_FILES
 	${SRC}/Bpm.cpp
 	${SRC}/Sud.cpp
 	${SRC}/Song.cpp
+	${INC}/Note.hpp
+	${INC}/Bpm.hpp
+	${INC}/Sud.hpp
+	${INC}/Song.hpp
 )
 
 add_library(IDCP ${PROJECT_FILES})
