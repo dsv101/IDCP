@@ -1,5 +1,7 @@
 #include "Song.hpp"
 #include <sstream>
+#include <cmath>
+#include <iostream>
 
 namespace idc::parser
 {
@@ -84,9 +86,32 @@ namespace idc::parser
 		return this->valid = true;
 	}
 
-	std::vector<std::pair<float,Note>> Song::seek(float start, float end, float runtime)
+	std::vector<Song::SeekResult> Song::seek(float start, float end, float runtime)
 	{
+		std::vector<SeekResult> results;
 
+		float bps = this->bpm.get_val() / 60;
+		float spb = 1 / bps;
+
+		int m0 = (int)std::floor(((start-this->sud.get_val()) / spb) / 4);
+		int m1= (int)std::floor(((end-this->sud.get_val()) / spb) / 4);
+
+		for (int m = m0; m < m1; ++m)
+		{
+			if (this->data.count(m) <= 0)
+				break;
+
+			for (Note n : this->data[m])
+			{
+				float nt = this->sud.get_val() + (((m*4) + (n.get_place()*4)) * spb);
+				float nd = (nt / runtime);
+
+				SeekResult sr(n, nd);
+				results.push_back(sr);
+			}
+		}
+
+		return results;
 	}
 
 	bool Song::is_valid() const

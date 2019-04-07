@@ -40,6 +40,7 @@ namespace idc::parser
 
         public:
             Note();
+            Note(const Note &note);
             virtual ~Note();
 
             bool init(std::string line);

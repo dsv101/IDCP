@@ -7,7 +7,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <utility>
+#include <sstream>
 
 namespace idc::parser
 {
@@ -22,12 +22,34 @@ namespace idc::parser
 			std::string error;
 
 		public:
+			struct SeekResult
+			{
+				Note note;
+				float dist_norm;
+
+				SeekResult(const Note &note, float dist_norm) :
+					note(note),
+					dist_norm(dist_norm)
+				{
+
+				}
+
+				std::string to_string() const
+				{
+					std::stringstream ss;
+					ss << "SeekResult: dist_norm(" << this->dist_norm << ")";
+					ss << " with " << this->note.to_string();
+
+					return ss.str();
+				}
+			};
+
 			Song();
 			virtual ~Song();
 
 			bool load_data(std::string str);
 
-			std::vector<std::pair<float,Note>> seek(float start, float end, float runtime);
+			std::vector<SeekResult> seek(float start, float end, float runtime); // all in seconds
 
 			bool is_valid() const;
 			bool is_finished() const;

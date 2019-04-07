@@ -14,6 +14,13 @@ namespace idc::parser
 	
 	}
 
+	Note::Note(const Note &note)
+	{
+		this->type = note.type;
+		this->place = note.place;
+		this->uid = note.uid;
+	}
+
 	Note::~Note()
 	{
 

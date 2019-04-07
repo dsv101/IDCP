@@ -5,33 +5,30 @@
 #include <iostream>
 
 std::string nd = "\
-bpm 12.8\n\
-sud 3.2\n\
+bpm 60\n\
+sud 4\n\
 \n\
 m\n\
-c 1/2\n\
-t 5/8\n\
-q 7/8\n\
-\n\
+l 0\n\
+l 1/4\n\
+l 2/4\n\
+l 3/4\n\
 m\n\
-l\n\
-r 1/2\n\
+r 0\n\
+r 1/4\n\
+r 2/4\n\
+r 3/4\n\
+m\n\
+q 0\n\
+q 1/4\n\
+q 2/4\n\
 q 3/4\n\
-\n\
 m\n\
-m\n\
-m\n\
-qh\n\
-m\n\
-qhe 1/2\n\
-\n\
-\n\
-\n\
-\n\
-\n\
-\n\
-\n\
-\n";
+c 0\n\
+c 1/4\n\
+c 2/4\n\
+c 3/4\n\
+";
 
 int main()
 {
@@ -44,7 +41,16 @@ int main()
 	if (!loaded)
 		std::cout << song.get_error() << std::endl;
 	else
-		std::cout << song.to_string() << std::endl;
+	{
+		std::cout << song.to_string() << std::endl << std::endl;
+
+		std::vector<idc::parser::Song::SeekResult> results = song.seek(8.f,12.f,60.f);
+
+		std::cout << "found " << results.size() << std::endl;
+
+		for (std::vector<idc::parser::Song::SeekResult>::iterator it = results.begin(); it != results.end(); ++it)
+			std::cout << (*it).to_string() << std::endl;
+	}
 
 	return 0;
 }
