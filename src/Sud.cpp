@@ -24,13 +24,20 @@ namespace parser
 		{
 			//std::cerr << m[0] << " '" << m[1] << "' '" << m[2] << "' '" << m[3] << "' '"<< m[4] << "' '" << m[5] << "'" << std::endl;
 
-			this->val =
-				(m[5] != "")
-					? std::stof(m[5])
-					: (m[2] != "")
-						? std::stof(m[2])
-						: std::stof(m[1]);
-			return true;
+			try
+			{
+				this->val =
+					(m[5] != "")
+						? std::stof(m[5])
+						: (m[2] != "")
+							? std::stof(m[2])
+							: std::stof(m[1]);
+				return true;
+			}
+			catch (...)
+			{
+				return false;
+			}
 		}
 
 		return false;

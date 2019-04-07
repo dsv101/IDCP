@@ -38,6 +38,7 @@ namespace parser
 		int lineNum = -1;
 		for(std::string line; std::getline(iss, line); )
 		{
+		    std::cout << line << std::endl;
 			lineNum++;
 			if (line == "")
 				continue;
@@ -152,6 +153,6 @@ namespace parser
 		return ss.str();
 	}
 
-	
+
 }
 }

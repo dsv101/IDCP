@@ -78,10 +78,17 @@ namespace parser
 				this->place = 0.0f;
 			else if (this->place != 0.0f)
 			{
-				this->place = std::stof(m[6]);
+				try
+				{
+					this->place = std::stof(m[6]);
 
-				if (m[7] != "")
-					this->place /= std::stof(m[7]);
+					if (m[7] != "")
+						this->place /= std::stof(m[7]);
+				}
+				catch(...)
+				{
+					return false;
+				}
 			}
 
 			return true;
