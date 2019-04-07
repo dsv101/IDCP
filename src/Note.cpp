@@ -2,7 +2,9 @@
 #include <sstream>
 #include <iostream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	unsigned int Note::numNotes = 0;
 
@@ -118,4 +120,5 @@ namespace idc::parser
 
 		return ss.str();
 	};
+}
 }

@@ -1,7 +1,9 @@
 #include "Bpm.hpp"
 #include <sstream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	Bpm::Bpm() :
 		val(-1.0f)
@@ -54,4 +56,5 @@ namespace idc::parser
 
 		return ss.str();
 	}
+}
 }

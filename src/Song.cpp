@@ -3,7 +3,9 @@
 #include <cmath>
 #include <iostream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	Song::Song() :
 		bpm(),
@@ -150,5 +152,6 @@ namespace idc::parser
 		return ss.str();
 	}
 
-	
+
+}
 }

@@ -1,7 +1,9 @@
 #include "Sud.hpp"
 #include <sstream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	Sud::Sud() :
 		val(-1.0f)
@@ -54,4 +56,5 @@ namespace idc::parser
 
 		return ss.str();
 	}
+}
 }

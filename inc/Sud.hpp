@@ -4,7 +4,9 @@
 #include <string>
 #include <regex>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	class Sud
 	{
@@ -21,6 +23,7 @@ namespace idc::parser
 
 			std::string to_string() const;
 	};
+}
 }
 
 #endif
