@@ -1,7 +1,9 @@
 #include "Sud.hpp"
 #include <sstream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	Sud::Sud() :
 		val(-1.0f)
@@ -22,20 +24,13 @@ namespace idc::parser
 		{
 			//std::cerr << m[0] << " '" << m[1] << "' '" << m[2] << "' '" << m[3] << "' '"<< m[4] << "' '" << m[5] << "'" << std::endl;
 
-			try
-			{
-				this->val =
-					(m[5] != "")
-						? std::stof(m[5])
-						: (m[2] != "")
-							? std::stof(m[2])
-							: std::stof(m[1]);
-				return true;
-			}
-			catch (...)
-			{
-				return false;
-			}
+			this->val =
+				(m[5] != "")
+					? std::stof(m[5])
+					: (m[2] != "")
+						? std::stof(m[2])
+						: std::stof(m[1]);
+			return true;
 		}
 
 		return false;
@@ -54,4 +49,5 @@ namespace idc::parser
 
 		return ss.str();
 	}
+}
 }

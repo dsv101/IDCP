@@ -9,7 +9,9 @@
 #include <vector>
 #include <sstream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	class Song
 	{
@@ -56,6 +58,7 @@ namespace idc::parser
 			std::string get_error() const;
 			std::string to_string() const;
 	};
+}
 }
 
 #endif

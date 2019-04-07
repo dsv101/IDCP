@@ -2,7 +2,9 @@
 #include <sstream>
 #include <iostream>
 
-namespace idc::parser
+namespace idc
+{
+namespace parser
 {
 	unsigned int Note::numNotes = 0;
 
@@ -76,17 +78,10 @@ namespace idc::parser
 				this->place = 0.0f;
 			else if (this->place != 0.0f)
 			{
-				try
-				{
-					this->place = std::stof(m[6]);
+				this->place = std::stof(m[6]);
 
-					if (m[7] != "")
-						this->place /= std::stof(m[7]);
-				}
-				catch(...)
-				{
-					return false;
-				}
+				if (m[7] != "")
+					this->place /= std::stof(m[7]);
 			}
 
 			return true;
@@ -118,4 +113,5 @@ namespace idc::parser
 
 		return ss.str();
 	};
+}
 }
